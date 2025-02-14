@@ -1,0 +1,33 @@
+.container {
+    display: grid;
+    gap: 2.5rem 2rem;
+    grid-template-areas:
+        'imagem detalhes'
+        'sobre sobre';
+    grid-template-columns: 377px 629px;
+    grid-template-rows: 562px max-content;
+    justify-content: center;
+    margin: 6.5rem 0 8.25rem;
+
+    .imagem {
+        box-shadow: 4px 4px 16px 0px #00000026;
+        grid-area: imagem;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .detalhes {
+        display: flex;
+        flex-direction: column;
+        gap: 2.75rem;
+        grid-area: detalhes;
+    }
+
+    .sobre {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        grid-area: sobre;
+    }
+}

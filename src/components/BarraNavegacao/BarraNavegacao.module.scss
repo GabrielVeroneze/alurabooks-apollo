@@ -1,0 +1,68 @@
+@use '@/sass/variaveis' as *;
+
+.navbar {
+    align-items: center;
+    display: flex;
+    height: 80px;
+    padding: 0 $padding-horizontal;
+
+    .navegacao {
+        padding: 0.625rem;
+        position: relative;
+
+        .titulo {
+            color: inherit;
+            text-transform: uppercase;
+        }
+        
+        .menu {
+            background-color: $branco;
+            box-shadow:
+                0 2px 5px 0 rgba(0, 0, 0, 0.16),
+                0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            display: none;
+            left: 0;
+            min-width: 100%;
+            position: absolute;
+            top: 36px;
+
+            .item {
+                color: $preto;
+                min-width: 100%;
+                padding: 0.625rem;
+
+                .link {
+                    color: inherit;
+                    line-height: normal;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        &:hover,
+        .item:hover {
+            background: linear-gradient(97.54deg,
+                #002f52 35.49%,
+                #326589 165.37%);
+            color: $branco;
+        }
+    
+        &:hover .menu {
+            display: block;
+        }
+    }
+
+    .usuario {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        justify-content: flex-end;
+
+        .conta {
+            color: inherit;
+            padding: 0.625rem;;
+            text-decoration: none;
+        }
+    }
+}

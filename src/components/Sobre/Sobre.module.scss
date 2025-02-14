@@ -1,0 +1,22 @@
+.sobre {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .titulo {
+        border-bottom: 2px solid #eb9b00;
+        color: #002f52;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 36px;
+        padding: 0.625rem 1rem;
+        width: max-content;
+    }
+
+    .texto {
+        color: #000000d9;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 24px;
+    }
+}

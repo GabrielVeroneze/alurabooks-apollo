@@ -1,0 +1,10 @@
+@use '@/sass/variaveis' as *;
+
+.titulo {
+    color: $amarelo-alaranjado;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: normal;
+    margin: 1rem 0;
+    text-align: center;
+}

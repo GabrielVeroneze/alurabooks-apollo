@@ -1,0 +1,56 @@
+@use '@/sass/variaveis' as *;
+
+.rodape {
+    background: $cinza-claro;
+    padding: 1rem;
+
+    .lista {
+        border-left: 1px solid $cinza-medio;
+        display: none;
+        padding-left: 1.25rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .rodape {
+        display: flex;
+        justify-content: space-around;
+
+        .titulo {
+            font-size: 1.5rem;
+        }
+
+        .lista {
+            display: block;
+
+            .subtitulo {
+                color: $cinza-medio;
+                font-size: 0.875rem;
+                font-weight: 400;
+                line-height: 21px;
+            }
+
+            .item {
+                align-items: center;
+                display: flex;
+                margin: 0.625rem 0;
+
+                .link {
+                    color: $cinza-escuro;
+                    margin-left: 0.625rem;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1728px) {
+    .rodape {
+        padding: 3rem 0;
+
+        .lista {
+            padding-left: 1rem;
+        }
+    }
+}

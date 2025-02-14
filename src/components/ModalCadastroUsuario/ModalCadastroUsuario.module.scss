@@ -1,0 +1,21 @@
+@use '@/sass/variaveis' as *;
+
+.conteudo {
+    align-items: center;
+    display: flex;
+    margin-top: 2rem;
+
+    .formulario {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 100%;
+        width: 500px;
+
+        .botao {
+            font-family: $fonte-secundaria;
+            margin-top: 1rem;
+            text-align: center;
+        }
+    }
+}

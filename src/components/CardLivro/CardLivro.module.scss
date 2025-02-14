@@ -1,0 +1,46 @@
+@use '@/sass/variaveis' as *;
+
+$gradiente: linear-gradient(97.54deg, #002f52 35.49%, #326589 165.37%);
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 245px;
+
+    .imagem {
+        height: auto;
+        width: 100%;
+    }
+
+    .detalhes {
+        padding: 1rem 1.125rem;
+
+        .titulo, .preco {
+            background-clip: text;
+            background-image: $gradiente;
+            color: transparent;
+            text-align: center;
+        }
+
+        .titulo {
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 27px;
+        }
+
+        .preco {
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 36px;
+
+            strong {
+                font-weight: 700;
+            }
+        }
+    }
+
+    .link {
+        font-family: $fonte-secundaria;
+        font-weight: 700;
+    }
+}

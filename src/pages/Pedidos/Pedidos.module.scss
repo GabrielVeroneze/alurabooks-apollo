@@ -1,0 +1,36 @@
+@use '@/sass/variaveis' as *;
+
+.pedidos {
+    padding: 2rem;
+
+    .titulo {
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 1.15rem;
+    }
+
+    .pedido {
+        align-items: flex-end;
+        border-bottom: 1px solid $azul-escuro;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem;
+
+        .dados {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            strong {
+                font-weight: 700;
+            }
+        }
+
+        .botoes {
+            display: flex;
+            font-family: $fonte-secundaria;
+            gap: 1rem;
+        }
+    }
+}

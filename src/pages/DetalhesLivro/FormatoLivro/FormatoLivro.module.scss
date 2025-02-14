@@ -1,0 +1,34 @@
+.formato {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .titulo {
+        background-clip: text;
+        background-image: linear-gradient(
+            97.54deg,
+            #002f52 35.49%,
+            #326589 165.37%
+        );
+        color: transparent;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 24px;
+    }
+
+    .opcoes {
+        display: flex;
+        gap: 1.5rem;
+
+        > * {
+            margin: 0;
+        }
+    }
+
+    .texto {
+        color: #0000008a;
+        font-size: 0.875rem;
+        font-weight: 700;
+        line-height: 21px;
+    }
+}

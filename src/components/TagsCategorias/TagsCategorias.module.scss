@@ -1,0 +1,24 @@
+@use '@/sass/variaveis' as *;
+
+.categorias {
+    background: linear-gradient(97.54deg, #002f52 35.49%, #326589 165.37%);
+    padding: 4rem 0;
+
+    .titulo {
+        color: $branco;
+        font-size: 2rem;
+        font-weight: 300;
+        margin-bottom: 2.5rem;
+        text-align: center;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: space-evenly;
+        margin: 0 auto;
+        max-width: 80%;
+        width: 900px;
+    }
+}
