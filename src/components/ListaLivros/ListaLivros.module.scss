@@ -1,8 +1,28 @@
-.livros {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5rem 1.125rem;
-    justify-content: center;
+@use '@/sass/variaveis' as *;
+
+.container {
     margin: 6.5rem auto 12.5rem;
     max-width: 60%;
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 0 auto 4.125rem;
+        max-width: 74.5%;
+
+        button {
+            align-self: center;
+            font-family: $fonte-secundaria;
+            font-weight: 700;
+            width: 169px;
+        }
+    }
+
+    .livros {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5rem 1.125rem;
+        justify-content: center;
+    }
 }
