@@ -9,8 +9,8 @@ interface ListaLivrosProps {
 }
 
 const OBTER_LIVROS = gql`
-    query ObterLivros {
-        livros {
+    query ObterLivros($categoriaId: Int) {
+        livros(categoriaId: $categoriaId) {
             id
             titulo
             slug
@@ -24,7 +24,11 @@ const OBTER_LIVROS = gql`
 `
 
 const ListaLivros = ({ categoria }: ListaLivrosProps) => {
-    const { data } = useQuery<{ livros: Livro[] }>(OBTER_LIVROS)
+    const { data } = useQuery<{ livros: Livro[] }>(OBTER_LIVROS, {
+        variables: {
+            categoriaId: categoria.id,
+        },
+    })
 
     return (
         <section className={styles.livros}>
