@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { gql, useQuery } from '@apollo/client'
 import { Link, useNavigate } from 'react-router-dom'
-import { buscarCategorias } from '@/services/categorias'
 import { limparToken, obterToken } from '@/utils/token'
 import { CategoriaDados } from '@/interfaces/CategoriaDados'
 import ModalLoginUsuario from '@/components/ModalLoginUsuario'
@@ -10,15 +10,21 @@ import logo from './assets/logo.png'
 import usuario from './assets/usuario.svg'
 import styles from './BarraNavegacao.module.scss'
 
+const OBTER_CATEGORIAS = gql`
+    query ObterCategorias {
+        categorias {
+            id
+            nome
+            slug
+        }
+    }
+`
+
 const BarraNavegacao = () => {
     const [modalLoginAberta, setModalLoginAberta] = useState<boolean>(false)
     const [modalCadastroAberta, setModalCadastroAberta] = useState<boolean>(false)
-    const [categorias, setCategorias] = useState<CategoriaDados[]>([])
 
-    useEffect(() => {
-        buscarCategorias()
-            .then(dados => setCategorias(dados))
-    }, [])
+    const { data } = useQuery<{ categorias: CategoriaDados[] }>(OBTER_CATEGORIAS)
 
     const navigate = useNavigate()
     const token = obterToken()
@@ -46,7 +52,7 @@ const BarraNavegacao = () => {
             <div className={styles.navegacao}>
                 <h4 className={styles.titulo}>Categorias</h4>
                 <ul className={styles.menu}>
-                    {categorias.map(categoria => (
+                    {data?.categorias.map(categoria => (
                         <li key={categoria.id} className={styles.item}>
                             <Link
                                 className={styles.link}
