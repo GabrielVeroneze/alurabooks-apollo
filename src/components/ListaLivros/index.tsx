@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { AbBotao, AbCampoTexto } from 'ds-alurabooks'
+import { useLivros } from '@/graphql/livros/hooks'
 import { CategoriaDados } from '@/interfaces/CategoriaDados'
 import CardLivro from '@/components/CardLivro'
 import styles from './ListaLivros.module.scss'
@@ -11,11 +12,7 @@ interface ListaLivrosProps {
 const ListaLivros = ({ categoria }: ListaLivrosProps) => {
     const [textoBusca, setTextoBusca] = useState<string>('')
 
-    const { data, refetch } = useQuery<{ livros: Livro[] }>(OBTER_LIVROS, {
-        variables: {
-            categoriaId: categoria.id,
-        },
-    })
+    const { data, refetch } = useLivros(categoria)
 
     const buscarLivros = (evento: React.FormEvent<HTMLFormElement>) => {
         evento.preventDefault()
