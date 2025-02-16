@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import { gql, useQuery } from '@apollo/client'
 import { AbBotao, AbCampoTexto } from 'ds-alurabooks'
 import { CategoriaDados } from '@/interfaces/CategoriaDados'
-import { Livro } from '@/interfaces/Livro'
 import CardLivro from '@/components/CardLivro'
 import styles from './ListaLivros.module.scss'
 
