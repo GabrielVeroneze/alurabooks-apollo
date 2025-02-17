@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { AbCampoTexto } from 'ds-alurabooks'
-import { buscarLivrosLancamentos, buscarLivrosMaisVendidos } from '@/services/livros'
+import { useDestaques } from '@/graphql/destaques/hooks'
 import Banner from '@/components/Banner'
 import Titulo from '@/components/Titulo'
 import LivrosDestaque from '@/components/LivrosDestaque'
@@ -11,16 +10,7 @@ import styles from './Home.module.scss'
 
 const Home = () => {
     const [busca, setBusca] = useState<string>('')
-
-    const { data: lancamentos } = useQuery({
-        queryKey: ['lancamentos'],
-        queryFn: buscarLivrosLancamentos,
-    })
-
-    const { data: maisVendidos } = useQuery({
-        queryKey: ['maisVendidos'],
-        queryFn: buscarLivrosMaisVendidos,
-    })
+    const { data } = useDestaques()
 
     return (
         <section className={styles.home}>
@@ -39,9 +29,9 @@ const Home = () => {
                 </form>
             </Banner>
             <Titulo texto="ÚLTIMOS LANÇAMENTOS" />
-            <LivrosDestaque livros={lancamentos ?? []} />
+            <LivrosDestaque livros={data?.destaques.lancamentos ?? []} />
             <Titulo texto="MAIS VENDIDOS" />
-            <LivrosDestaque livros={maisVendidos ?? []} />
+            <LivrosDestaque livros={data?.destaques.maisVendidos ?? []} />
             <TagsCategorias />
             <NewsLetter />
         </section>
