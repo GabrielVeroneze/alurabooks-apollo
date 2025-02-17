@@ -1,7 +1,9 @@
+import { Autor } from '@/interfaces/Autor'
 import { OpcaoCompra } from '@/interfaces/OpcaoCompra'
 
 export interface Livro {
     id: number
+    autorId: number
     categoria: number
     titulo: string
     slug: string
@@ -10,7 +12,7 @@ export interface Livro {
     numeroPaginas: number
     publicacao: string
     imagemCapa: string
-    autor: number
+    autor: Autor
     opcoesCompra: OpcaoCompra[]
     sobre: string
 }
