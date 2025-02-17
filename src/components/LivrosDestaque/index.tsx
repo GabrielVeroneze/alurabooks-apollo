@@ -35,7 +35,7 @@ const LivrosDestaque = ({ livros }: LivrosDestaqueProps) => {
                         <img
                             className={styles.imagem}
                             src={livro.imagemCapa}
-                            alt={`Capa do livro ${livro.titulo} escrito por ${livro.autor}`}
+                            alt={`Capa do livro ${livro.titulo} escrito por ${livro.autor.nome}`}
                         />
                     </li>
                 ))}
@@ -47,7 +47,7 @@ const LivrosDestaque = ({ livros }: LivrosDestaqueProps) => {
                     </header>
                     <h6 className={styles.nome}>{selecionado?.titulo}</h6>
                     <p className={styles.info}>{selecionado?.descricao}</p>
-                    <p className={styles.info}>Por: {selecionado?.autor}</p>
+                    <p className={styles.info}>Por: {selecionado?.autor.nome}</p>
                     <footer className={styles.rodape}>
                         <div className={styles.preco}>
                             <em>A partir de:</em>
