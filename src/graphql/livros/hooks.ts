@@ -9,6 +9,7 @@ export const useLivros = () => {
     const { data, refetch } = useQuery<{ livros: Livro[] }>(OBTER_LIVROS, {
         variables: {
             categoriaId: filtro.categoria?.id,
+            titulo: filtro.titulo
         },
         onCompleted(data) {
             if (data.livros) {
