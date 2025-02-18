@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useReactiveVar } from '@apollo/client'
 import { AbBotao, AbCampoTexto } from 'ds-alurabooks'
 import { filtroLivrosVar, livrosVar } from '@/graphql/livros/state'
@@ -14,7 +14,17 @@ interface ListaLivrosProps {
 const ListaLivros = ({ categoria }: ListaLivrosProps) => {
     const [textoBusca, setTextoBusca] = useState<string>('')
 
-    filtroLivrosVar({ categoria: categoria, titulo: textoBusca })
+    useEffect(() => {
+        filtroLivrosVar({
+            ...filtroLivrosVar(),
+            titulo: textoBusca.length >= 3 ? textoBusca : '',
+        })
+    }, [textoBusca])
+
+    filtroLivrosVar({
+        ...filtroLivrosVar(),
+        categoria: categoria,
+    })
 
     const livros = useReactiveVar(livrosVar)
 
