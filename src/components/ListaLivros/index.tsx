@@ -16,15 +16,10 @@ const ListaLivros = ({ categoria }: ListaLivrosProps) => {
 
     useEffect(() => {
         filtroLivrosVar({
-            ...filtroLivrosVar(),
+            categoria: categoria,
             titulo: textoBusca.length >= 3 ? textoBusca : '',
         })
-    }, [textoBusca])
-
-    filtroLivrosVar({
-        ...filtroLivrosVar(),
-        categoria: categoria,
-    })
+    }, [categoria, textoBusca])
 
     const livros = useReactiveVar(livrosVar)
 
