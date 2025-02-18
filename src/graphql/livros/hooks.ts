@@ -1,13 +1,14 @@
-import { useQuery } from '@apollo/client'
+import { useQuery, useReactiveVar } from '@apollo/client'
 import { OBTER_LIVROS } from '@/graphql/livros/queries'
-import { livrosVar } from '@/graphql/livros/state'
-import { CategoriaDados } from '@/interfaces/CategoriaDados'
+import { filtroLivrosVar, livrosVar } from '@/graphql/livros/state'
 import { Livro } from '@/interfaces/Livro'
 
-export const useLivros = (categoria: CategoriaDados) => {
+export const useLivros = () => {
+    const filtro = useReactiveVar(filtroLivrosVar)
+
     const { data, refetch } = useQuery<{ livros: Livro[] }>(OBTER_LIVROS, {
         variables: {
-            categoriaId: categoria.id,
+            categoriaId: filtro.categoria?.id,
         },
         onCompleted(data) {
             if (data.livros) {
