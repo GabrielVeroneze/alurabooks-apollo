@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import { AbTag } from 'ds-alurabooks'
 import { useLivro } from '@/graphql/livro/hooks'
 import { formatarOpcoesCompra } from '@/utils/formatador-opcoes-compra'
 import Loader from '@/components/Loader'
@@ -50,6 +51,15 @@ const DetalhesLivro = () => {
                         titulo="Sobre o livro"
                         texto={data.livro.sobre}
                     />
+                </div>
+                <div className={styles.tags}>
+                    {data.livro.tags.map(tag => (
+                        <AbTag
+                            key={tag.id}
+                            contexto="secundario"
+                            texto={tag.nome}
+                        />
+                    ))}
                 </div>
             </section>
         </main>
