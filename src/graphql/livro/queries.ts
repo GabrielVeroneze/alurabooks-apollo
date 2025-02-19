@@ -13,6 +13,10 @@ export const OBTER_LIVRO = gql`
                 preco
                 formatos
             }
+            tags {
+                id
+                nome
+            }
             autor {
                 nome
                 sobre
