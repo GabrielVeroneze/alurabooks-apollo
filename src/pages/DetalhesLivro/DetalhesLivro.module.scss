@@ -1,9 +1,10 @@
 .container {
     display: grid;
-    gap: 2.5rem 2rem;
+    gap: 1.5rem 2rem;
     grid-template-areas:
         'imagem detalhes'
-        'sobre sobre';
+        'sobre sobre'
+        'tags tags';
     grid-template-columns: 377px 629px;
     grid-template-rows: 562px max-content;
     justify-content: center;
@@ -29,5 +30,11 @@
         flex-direction: column;
         gap: 1.5rem;
         grid-area: sobre;
+    }
+
+    .tags {
+        display: flex;
+        gap: 1rem;
+        grid-area: tags;
     }
 }
