@@ -1,7 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
-import { buscarLivroEspecifico } from '@/services/livros'
-import { buscarAutor } from '@/services/autores'
+import { useLivro } from '@/graphql/livro/hooks'
 import { formatarOpcoesCompra } from '@/utils/formatador-opcoes-compra'
 import Loader from '@/components/Loader'
 import TituloPrincipal from '@/components/TituloPrincipal'
@@ -13,27 +11,13 @@ import styles from './DetalhesLivro.module.scss'
 
 const DetalhesLivro = () => {
     const params = useParams()
-
-    const { data: livro, isLoading, error } = useQuery({
-        queryKey: ['livro', params.slug],
-        queryFn: () => buscarLivroEspecifico(params.slug || ''),
-    })
-
-    const { data: autor } = useQuery({
-        queryKey: ['autor', livro?.autor],
-        queryFn: () => buscarAutor(livro!.autor),
-    })
+    const { data, loading, error } = useLivro(params.slug || '')
 
     if (error) {
-        console.log(error.message)
         return <h1>Ops! Algum erro inesperado aconteceu</h1>
     }
 
-    if (livro === null) {
-        return <h1>Livro não encontrado!</h1>
-    }
-
-    if (isLoading || !livro || !autor) {
+    if (loading || !data?.livro) {
         return <Loader />
     }
 
@@ -43,23 +27,29 @@ const DetalhesLivro = () => {
             <section className={styles.container}>
                 <img
                     className={styles.imagem}
-                    src={livro.imagemCapa}
-                    alt={livro.descricao}
+                    src={data.livro.imagemCapa}
+                    alt={data.livro.descricao}
                 />
                 <div className={styles.detalhes}>
                     <LivroInfo
-                        titulo={livro.titulo}
-                        descricao={livro.descricao}
-                        autor={autor.nome}
+                        titulo={data.livro.titulo}
+                        descricao={data.livro.descricao}
+                        autor={data.livro.autor.nome}
                     />
                     <FormatoLivro
-                        opcoes={formatarOpcoesCompra(livro.opcoesCompra)}
+                        opcoes={formatarOpcoesCompra(data.livro.opcoesCompra)}
                     />
                     <ComprarLivro />
                 </div>
                 <div className={styles.sobre}>
-                    <Sobre titulo="Sobre o Autor" texto={autor.sobre} />
-                    <Sobre titulo="Sobre o livro" texto={livro.sobre} />
+                    <Sobre
+                        titulo="Sobre o Autor"
+                        texto={data.livro.autor.sobre}
+                    />
+                    <Sobre
+                        titulo="Sobre o livro"
+                        texto={data.livro.sobre}
+                    />
                 </div>
             </section>
         </main>
